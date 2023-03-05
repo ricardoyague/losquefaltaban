@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="Description" content="Enter your description here" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<title>LQF :: New Post</title>
+<script src="https://cdn.tiny.cloud/1/xdklbinqud41xxl8hyapg2iwi7u2hyju5wwjvxu85o86dpbi/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Los que Faltabann</h1>
+		<form action="#" th:action=@{/posts/new} th:object="${post}" method="POST">
+			<input type="hidden" th:field="*{account}" />
+			<input type="hidden" th:field="*{createdAt}" />
+			<h2>Write a new Post</h2>
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input id="title" type="text" th:field="*{title}" placeholder="title" />
+			</div>
+			<div class="form-group">
+				<label for="summary">Summary</label>
+				<input id="summary" type="text" th:field="*{summary}" placeholder="summary" />
+			</div>
+			<div class="form-group">
+				<label for="body">Body</label>
+				<textarea th:field="*{body}"></textarea>
+				<script>
+					tinymce
+							.init({
+								selector : 'textarea',
+								plugins : 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+								toolbar : 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+								tinycomments_mode : 'embedded',
+								tinycomments_author : 'Author name',
+								mergetags_list : [ {
+									value : 'First.Name',
+									title : 'First Name'
+								}, {
+									value : 'Email',
+									title : 'Email'
+								}, ]
+							});
+				</script>
+			</div>
+			<input type="submit" value="Save" />
+		</form>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
