@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.losquefaltabansoria.model.Account;
+import com.losquefaltabansoria.model.Member;
 import com.losquefaltabansoria.service.AccountService;
 
 @Controller
@@ -28,8 +29,9 @@ public class AccountController {
 
 	@GetMapping("/register")
 	public String getRegister(Model model) {
-		Account account = new Account();
-		model.addAttribute("account", account);
+		//		Account account = new Account();
+		Member member = new Member();
+		model.addAttribute("member", member);
 		return "register";
 	}
 

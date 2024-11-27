@@ -15,6 +15,13 @@
 	<description>Web de los que faltaban Soria</description>
 	<properties>
 		<java.version>17</java.version>
+		<service.name>lqf</service.name>
+		<service.host>losquefaltabansoria.com</service.host>
+		<service.host.user>ec2-user</service.host.user>
+		<service.host.remotedir>/opt/lqf</service.host.remotedir>
+		<service.host.key.file>C:\Users\ricardo\Dropbox\LQF\2023\WEB\m3a-dev.pem</service.host.key.file>
+		<service.host.key.passphrase></service.host.key.passphrase>
+		
 	</properties>
 	<dependencies>
 		<dependency>
@@ -57,13 +64,55 @@
 	</dependencies>
 
 	<build>
-		<finalName>lqf</finalName>
+		<finalName>${service.name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>scp-to-remote</id>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<!-- keyfile+passphrase or  password, choose one -->
+								<scp file="${project.basedir}\target\${service.name}.jar" todir="${service.host.user}@${service.host}:${service.host.remotedir}" 
+									verbose="true" trust="true" keyfile="${service.host.key.file}" passphrase="${service.host.key.passphrase}">
+			               		</scp>
+<!--								<scp localFile="${project.basedir}/target/${project.name}.jar" remoteToFile="root@ip_addr:/root/jars/${project.name}.jar" verbose="true" password="your_pass" trust="true" />-->
+								<!-- calls deploy script -->
+<!--								<sshexec host="losquefaltabansoria.com" trust="yes" username="ec2-user" password="your_pass" -->
+								<sshexec host="${service.host}" trust="yes" username="${service.host.user}" keyfile="${service.host.key.file}" passphrase="${service.host.key.passphrase}"
+									command="sudo systemctl restart ${service.name}" />
+								<!-- SSH -->
+								<taskdef name="sshexec" classname="org.apache.tools.ant.taskdefs.optional.ssh.SSHExec" 
+									classpathref="maven.plugin.classpath" />
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+				<!-- libraries for scp impl: antrun doesn't use os's scp -->
+				<dependencies>
+					<dependency>
+						<groupId>com.jcraft</groupId>
+						<artifactId>jsch</artifactId>
+						<version>0.1.53</version>
+					</dependency>
+					<dependency>
+						<groupId>ant</groupId>
+						<artifactId>ant-jsch</artifactId>
+						<version>1.6.5</version>
+					</dependency>
+				</dependencies>
+			</plugin>			
+        </plugins>
 	</build>
 
 </project>

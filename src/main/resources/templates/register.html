@@ -1,39 +1,106 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es" class="h-100">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="Description" content="Enter your description here" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="LQF 2023" />
+    <meta name="generator" content="Hugo 0.84.0" />
+    <title>Los que Faltaban (Soria) :: Registro de Socios</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/" />
+    <link th:href="@{/fonts/arnold_bocklin_mn.ttf}" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <title>LQF :: Register</title>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/cover.css}" href="/css/cover.css" rel="stylesheet" />
   </head>
-  <body>
-    <div class="container">
-      <h1>Los que Faltabann</h1>
-      <form action="#" th:action=@{/register} th:object="${account}" method="POST">
+  <body class="d-flex h-100 text-center text-white bg-lqf">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">Los que Faltaban</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+          	<a class="nav-link" href="/">Volver</a>
+          </nav>
+        </div>
+      </header>
+
+	<main class="px-3">
+	<div>
+        	<img class="main" th:src="@{/img/logo_new.512.png}" alt="Los que Faltaban - Soria" width = "192px"/>
+		</div>
+		<form action="#" th:action=@{/register} th:object="${member}" method="POST" class="lqf text-black">
+		<header>
+		</header>
+		<main>
       	<div class="form-group">
-      		<label for="firstName">First Name</label>
-      		<input id="firstName" type="text" th:field="*{firstName}" placeholder="First Name"/>
+      		<label for="firstName">Nombre</label>
+      		<input id="firstName" type="text" th:field="*{firstName}" placeholder="Nombre" class="form-control"/>
       	</div>
       	<div class="form-group">
-      		<label for="lastName">Last Name</label>
-      		<input id="lastName" type="text" th:field="*{lastName}" placeholder="lastName"/>
+      		<label for="lastName">Apellidos</label>
+      		<input id="lastName" type="text" th:field="*{lastName}" placeholder="Apellidos" class="form-control"/>
       	</div>
-        	<div class="form-group">
+      	<div class="form-group">
+      		<label for="address">Dirección</label>
+      		<input id="address" type="text" th:field="*{address}" placeholder="Dirección" class="form-control"/>
+      	</div>
+      	<div class="form-group">
+      		<label for="postalCode">Código Postal</label>
+      		<input id="postalCode" type="text" th:field="*{postalCode}" placeholder="Código Postal" class="form-control"/>
+      	</div>
+      	<div class="form-group">
+      		<label for="municipality">Municipìo</label>
+      		<input id="municipality" type="text" th:field="*{municipality}" placeholder="Municipìo" class="form-control"/>
+      	</div>
+      	<div class="form-group">
+      		<label for="province">Provincia</label>
+      		<input id="province" type="text" th:field="*{province}" placeholder="Provincia" class="form-control"/>
+      	</div>
+      	<div class="form-group">
+      		<label for="telephone">Teléfono</label>
+      		<input id="telephone" type="text" th:field="*{telephone}" placeholder="Teléfono" class="form-control"/>
+      	</div>
+        <div class="form-group">
       		<label for="email">Email</label>
-      		<input id="email" type="text" th:field="*{email}" placeholder="email"/>
+      		<input id="email" type="text" th:field="*{email}" placeholder="email" class="form-control"/>
       	</div>
       	<div class="form-group">
-      		<label for="password">Password</label>
-      		<input id="password" type="password" th:field="*{password}" placeholder="password"/>
+      		<label for="password" class="form-label">Password</label>
+      		<input id="password" type="password" th:field="*{password}" placeholder="password" class="form-control"/>
+      		<div id="passwordHelp" class="form-text">El password debe tener una longitud de 8 caracteres alfanuméricos.</div>
       	</div>
-    	<input type="submit" value="Register"/>
+      	</main>
+<!--       	<br/> -->
+<footer>
+    	<input type="submit" value="Register" class="btn btn-primary-lqf"/>
+    	</footer>
       </form>
-            </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+	</main>
+
+      <!-- <footer th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</footer> -->
+      <footer class="mt-auto text-white-50">
+        <p>© 2023, Asociación Cultural y Taurina Peña Los que Faltaban.</p>
+      </footer>
+    </div>
   </body>
 </html>

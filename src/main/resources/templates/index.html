@@ -4,15 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+    <meta name="author" content="LQF 2023" />
     <meta name="generator" content="Hugo 0.84.0" />
-    <title>Cover Template · Bootstrap v5.0</title>
+    <title>Los que Faltaban (Soria)</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/" />
     <link th:href="@{/fonts/arnold_bocklin_mn.ttf}" rel="stylesheet" type="text/css" />
 
     <!-- Bootstrap core CSS -->
-    <!-- <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css" />
 
     <style>
@@ -47,20 +46,22 @@
         </div>
       </header>
 
-      <main class="px-3">
-        <!--         <h1>Los que Faltaban</h1> -->
-        <!--         <p class="lead"> -->
-        <!--           Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own. -->
-        <!--         </p> -->
-        <img class="main" th:src="@{/img/logo_new.512.png}" alt="Los que Faltaban - Soria" />
-        <!--         <p class="lead"> -->
-        <!--           <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a> -->
-        <!--         </p> -->
-      </main>
+	<main class="px-3">
+		<div>
+        	<img class="main" th:src="@{/img/logo_new.512.png}" alt="Los que Faltaban - Soria" />
+		</div>
+		<div>   
+			<br/>
+			<br/>
+			<form action="#" th:action=@{/register} method="GET">
+				<button type="submit" class="btn btn-primary-lqf btn-primary-lqf-outline">Regístrate</button>
+			</form>
+		</div>
+	</main>
 
       <!-- <footer th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</footer> -->
       <footer class="mt-auto text-white-50">
-        <p>© 2023 Asociación Cultural y Taurina Peña Los que Faltaban.</p>
+        <p>© 2023, Asociación Cultural y Taurina Peña Los que Faltaban.</p>
       </footer>
     </div>
   </body>

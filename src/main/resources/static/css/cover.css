@@ -3,6 +3,7 @@
  */
 :root {
   --bs-maroon: #af0f2a;
+  --bs-light-maroon: #C8606D;
 }
 
 @font-face {
@@ -25,8 +26,11 @@ h1 {
  */
 
 body {
-  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+/*   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5); */
+/*   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5); */
+  -webkit-filter: drop-shadow(inset 0 0 5rem rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(inset 0 0 5rem rgba(0, 0, 0, 0.5));
+  
 }
 
 img.main {
@@ -38,13 +42,16 @@ img.main {
   background-color: var(--bs-maroon);
 }
 .cover-container {
-  max-width: 42em;
+  max-width: 90%;
 }
 
 /*
  * Header
  */
 
+.float-md-start {
+	font-family: "Arnold Boklin MN";
+}
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
@@ -65,4 +72,65 @@ img.main {
 .nav-masthead .active {
   color: #fff;
   border-bottom-color: #fff;
+}
+
+/*
+ * Button
+ */
+
+.btn-primary-lqf {
+    color: #fff;
+    background-color: var(--bs-maroon); /* #0d6efd; */
+    border-color: var(--bs-maroon); /* #0d6efd */
+}
+.btn-primary-lqf-outline {
+    color: #fff;
+    background-color: transparent;
+    border-color: #fff; /* #0d6efd */
+}
+
+.btn-primary-lqf:hover {
+    color: #fff;
+    background-color: var(--bs-light-maroon);
+    border-color: var(--bs-light-maroon);
+}
+
+.btn-check:focus+.btn-primary-lqf,.btn-primary-lqf:focus {
+    color: #fff;
+    background-color: var(--bs-light-maroon);
+    border-color: var(--bs-light-maroon);
+    box-shadow: 0 0 0 .25rem rgba(49,132,253,.5)
+}
+
+.btn-check:active+.btn-primary-lqf,.btn-check:checked+.btn-primary-lqf,.btn-primary-lqf.active,.btn-primary-lqf:active,.show>.btn-primary-lqf.dropdown-toggle {
+    color: #fff;
+    background-color: var(--bs-light-maroon);
+    border-color: var(--bs-light-maroon);
+}
+
+.btn-check:active+.btn-primary-lqf:focus,.btn-check:checked+.btn-primary-lqf:focus,.btn-primary-lqf.active:focus,.btn-primary-lqf:active:focus,.show>.btn-primary-lqf.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .1rem rgba(253,253,253,.5)
+}
+
+.btn-primary-lqf.disabled,.btn-primary-lqf:disabled {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd
+}
+/*
+* Form
+*/
+
+form.lqf {
+	max-width: 640px;
+	background-color: white;
+	padding: 2.5em;
+	margin: 1em auto;
+	text-align : left !important;
+	box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
+	
+}
+
+form.lqf > footer{
+	margin-top: 1em;
 }
